@@ -62,27 +62,3 @@ class HeatmapGenerator:
         base_map.save(output_file)
         logger.info(f"circle heatmap saved to {output_file}")
 
-    @staticmethod
-    def generate_difference_heatmap(new_df, old_df, output_file):
-        # convert cell column to string for proper comparison
-        old_df["cell"] = old_df["cell"].astype(str)
-        new_df["cell"] = new_df["cell"].astype(str)
-
-        # find new entries
-        new_data = new_df[~new_df["cell"].isin(old_df["cell"])]
-        logger.info(f"found {len(new_data)} new entries.")
-
-        # set center of the map (munich)
-        map_center = [48.137154, 11.576124]
-        base_map = folium.Map(location=map_center, zoom_start=11)
-
-        # heatmap for old data (gray)
-        old_heat_data = [[row["lat"], row["lon"]] for _, row in old_df.iterrows()]
-        HeatMap(old_heat_data, gradient={0.2: "gray", 0.4: "lightgray", 1: "black"}).add_to(base_map)
-
-        # mark new cells in red
-        for _, row in new_data.iterrows():
-            folium.CircleMarker([row["lat"], row["lon"]], radius=5, color='red', fill=True).add_to(base_map)
-
-        base_map.save(output_file)
-        logger.info(f"difference heatmap saved to {output_file}")

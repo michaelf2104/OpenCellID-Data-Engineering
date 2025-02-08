@@ -1,5 +1,6 @@
 import pandas as pd
 import logging
+from HeatMapGenerator import HeatmapGenerator
 
 # configure logger
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -25,6 +26,7 @@ class DataProcessor:
             raise ValueError(f"unknown region: {region_name}. available options: {list(self.REGION_BOUNDS.keys())}")
 
         self.mnc = mnc
+        self.provider = provider
         logger.info(f"initialized processor for region: {region_name} with mnc: {mnc} known as {provider}")
 
     def load_and_clean_data(self, file_path):
@@ -64,9 +66,19 @@ class DataProcessor:
         df_final.to_csv("final_dataset.csv")
         
         logger.info(f"dataset after cleaning has {len(df_final)} rows.")
-        logger.info(f"final dataset has been saved tp directory")
-        
-        return df_final
+        logger.info(f"final dataset has been saved to directory")
+    
+        self.generate_heatmaps(df_final)
+
+    def generate_heatmaps(self, df):
+        """
+        generates heatmaps for the given dataframe
+        """
+        heatmap_generator = HeatmapGenerator()
+        logger.warning("Generating visualizations for the given dataset.")
+        heatmap_generator.generate_heatmap(df, "../heatmaps/new_heatmap.html")
+        heatmap_generator.generate_circle_heatmap(df, "../heatmaps/new_circle_heatmap.html")
+        logger.info("heatmaps generated successfully")
 
     def add_header(self, df):
         """
@@ -169,14 +181,3 @@ class DataProcessor:
         logger.info(f"removed rows: {before_filtering - after_filtering}")
 
         return df
-
-    def get_new_data(self, new_df, old_df):
-        """
-        compares the new dataset with the old one and returns only the new rows
-        :param new_df: new dataset
-        :param old_df: old dataset
-        :return: dataframe with new rows
-        """
-        new_data = pd.concat([new_df, old_df, old_df]).drop_duplicates(keep=False)
-        logger.info(f"new data not present in old dataset: {len(new_data)} rows")
-        return new_data

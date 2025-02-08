@@ -12,8 +12,6 @@ class Application(TkinterDnD.Tk):
     def __init__(self):
         super().__init__()
         
-        self.previous_dataset_path = None  
-
         self.title("netzwerkanalyse")
         self.geometry("600x400")
 
@@ -59,13 +57,6 @@ class Application(TkinterDnD.Tk):
         self.region_dropdown = OptionMenu(self, self.selected_region, *self.region_options)
         self.region_dropdown.pack(pady=5)
 
-    def on_old_file_drop(self, event):
-        """
-        stores the path of the old dataset
-        """
-        self.previous_dataset_path = event.data
-        logger.info(f"old dataset received: {self.previous_dataset_path}")
-
     def on_new_file_drop(self, event):
         """
         processes the new dataset and generates heatmaps
@@ -81,29 +72,7 @@ class Application(TkinterDnD.Tk):
         data_processor = DataProcessor(region_name=region, mnc=mnc, provider=self.selected_mnc)
 
         # process new dataset
-        new_df = data_processor.load_and_clean_data(new_dataset_path)
-
-        if self.previous_dataset_path:
-            # compare with old dataset if available
-            old_df = data_processor.load_and_clean_data(self.previous_dataset_path)
-            new_data = data_processor.get_new_data(new_df, old_df)
-
-            if new_data.empty:
-                logger.info("no new data found. skipping heatmap generation.")
-            else:
-                self.generate_heatmaps(new_data)
-        else:
-            logger.warning("no previous dataset found. generating heatmaps for new dataset.")
-            self.generate_heatmaps(new_df)
-
-    def generate_heatmaps(self, df):
-        """
-        generates heatmaps for the given dataframe
-        """
-        heatmap_generator = HeatmapGenerator()
-        heatmap_generator.generate_heatmap(df, "../heatmaps/new_heatmap.html")
-        heatmap_generator.generate_circle_heatmap(df, "../heatmaps/new_circle_heatmap.html")
-        logger.info("heatmaps generated successfully")
+        data_processor.load_and_clean_data(new_dataset_path)
 
 # start the gui application
 if __name__ == "__main__":

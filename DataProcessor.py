@@ -60,8 +60,11 @@ class DataProcessor:
 
         # filter for selected mnc
         df_final = self.filter_for_mnc(df_relevant_columns)
+
+        df_final.to_csv("final_dataset.csv")
         
         logger.info(f"dataset after cleaning has {len(df_final)} rows.")
+        logger.info(f"final dataset has been saved tp directory")
         
         return df_final
 

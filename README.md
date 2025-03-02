@@ -24,7 +24,7 @@ Includes **data cleaning, transformation, storage, and visualization** with **Fo
 
 1️⃣ **Clone the repository:**  
 ```bash
-git clone https://github.com/your-username/OpenCellID-Data-Engineering.git
+git clone https://github.com/michaelf2104/OpenCellID-Data-Engineering.git
 ```
 
 2️⃣ **Navigate into the project directory**

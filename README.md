@@ -3,7 +3,7 @@
 A **data engineering pipeline** for processing **OpenCellID** datasets.  
 Includes **data cleaning, transformation, storage, and visualization** with **Folium** and **Pandas**.  
 
-🚀 **Key Features:**  
+🌟 **Key Features:**  
 ✅ **Data Preprocessing** (removing duplicates & empty rows)  
 ✅ **Snapshot Mechanism** for tracking dataset changes  
 ✅ **Heatmap Generation** for visualizing cell tower distribution  
@@ -12,7 +12,15 @@ Includes **data cleaning, transformation, storage, and visualization** with **Fo
 
 ---
 
-## 📥 Installation  
+## 📌 Use Cases  
+
+- **📍 Network Coverage Analysis**: Helps telecom companies and researchers analyze mobile network coverage and identify weak signal areas.  
+- **📍 Urban Planning & Infrastructure**: Supports city planners in optimizing the placement of new cell towers for better connectivity.  
+
+
+---
+
+## 📦 Installation  
 
 1️⃣ **Clone the repository:**  
 ```bash

@@ -1,7 +1,7 @@
 # OpenCellID-Data-Engineering ⚙️
 
 A **data engineering pipeline** for processing **OpenCellID** datasets.  
-Includes **data cleaning, transformation, storage, and visualization** with **Folium** and **Pandas**.  
+Includes **data cleaning, transformation, storage, and visualization** with **Folium** and **Pandas**. This project represents a small part of a larger planned software that will be continuously developed over time to include additional features and improvements.
 
 🌟 **Key Features:**  
 ✅ **Data Preprocessing** (removing duplicates & empty rows)  

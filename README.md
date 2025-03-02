@@ -48,7 +48,7 @@ pip install -r requirements.txt
 
 ## 🚧 Project Status  
 
-This project is still a work in progress. Additional features will be implemented to enable more in-depth analyses and expand the scope beyond specific mobile network operators. The goal is to extend the dataset coverage from Germany to a broader European scale, allowing for a more comprehensive evaluation of cellular network data. Stay tuned for further updates!  
+This project is still a work in progress. Additional features will be implemented to enable more in-depth analyses and expand the scope beyond specific mobile network operators. The goal is to extend the dataset coverage from Germany to a broader European scale, allowing for a more comprehensive evaluation of cellular network data. 
 
 ---
 

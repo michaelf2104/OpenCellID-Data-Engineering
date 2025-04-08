@@ -17,33 +17,6 @@ Includes **data cleaning, transformation, storage, and visualization** with **Fo
 - **📍 Network Coverage Analysis**: Helps telecom companies and researchers analyze mobile network coverage and identify weak signal areas.  
 - **📍 Urban Planning & Infrastructure**: Supports city planners in optimizing the placement of new cell towers for better connectivity.  
 
-
----
-
-## 📦 Installation  
-
-1️⃣ **Clone the repository:**  
-```bash
-git clone https://github.com/michaelf2104/OpenCellID-Data-Engineering.git
-```
-
-2️⃣ **Navigate into the project directory**
-```bash
-cd OpenCellID-Data-Engineering
-```
-
-3️⃣ **Create a virtual environment (recommended)**
-```bash
-python -m venv venv
-source venv/bin/activate  # macOS/Linux
-venv\Scripts\activate     # Windows
-```
-
-4️⃣ **Install required dependencies:**
-```bash
-pip install -r requirements.txt
-```
-
 ---
 
 ## 🚧 Project Status  
